@@ -10,13 +10,13 @@ end
 end
 
 @testitem "Basic functionality test" tags=[:unit, :fast] setup=[SharedData] begin
-    result = LearnDocs.hello_world()
+    result=LearnDocs.hello_world()
     @test result == expected_output
     @test isa(result, String)
 end
 
 @testitem "Input validation test" tags=[:unit, :validation] setup=[CommonHelpers] begin
-    result = LearnDocs.hello_world()
+    result=LearnDocs.hello_world()
     @test CommonHelpers.is_valid_string(result)
 end
 
