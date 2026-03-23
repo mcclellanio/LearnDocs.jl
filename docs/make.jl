@@ -1,5 +1,6 @@
 using LearnDocs
 using Documenter
+using DocumenterVitepress
 
 DocMeta.setdocmeta!(LearnDocs, :DocTestSetup, :(using LearnDocs); recursive = true)
 
@@ -63,8 +64,20 @@ makedocs(;
     authors = "Michael McClellan <mcclellanio@fastmail.com>",
     repo = "https://github.com/mcclellanio/LearnDocs.jl/blob/{commit}{path}#{line}",
     sitename = "LearnDocs.jl",
-    format = Documenter.HTML(; canonical = "https://mcclellanio.github.io/LearnDocs.jl"),
+    # format = Documenter.HTML(; canonical = "https://mcclellanio.github.io/LearnDocs.jl"),
+    format = DocumenterVitepress.MarkdownVitepress(
+        repo = "github.com/mcclellanio/LearnDocs.jl",
+        devbranch = "main",
+        devurl = "dev"
+    ),
     pages = list_pages()
 )
 
-deploydocs(; repo = "github.com/mcclellanio/LearnDocs.jl")
+# deploydocs(; repo = "github.com/mcclellanio/LearnDocs.jl")
+DocumenterVitepress.deploydocs(;
+    repo = "github.com/mcclellanio/LearnDocs.jl",
+    target = joinpath(@__DIR__, "build"),
+    branch = "gh-pages",
+    devbranch = "main",
+    push_preview = true
+)
