@@ -6,7 +6,7 @@ DocMeta.setdocmeta!(LearnDocs, :DocTestSetup, :(using LearnDocs); recursive = tr
 
 # Add titles of sections and overrides page titles
 const titles = Dict(
-# "10-tutorials" => "Tutorials", # example folder title
+    # "10-tutorials" => "Tutorials", # example folder title
     "91-developer.md" => "Developer docs",
 )
 

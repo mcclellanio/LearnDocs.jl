@@ -1,3 +1,5 @@
+using LearnDocs
+
 @testsnippet SharedData begin
     sample_input = "Hello, World!"
     expected_output = "Hello, World!"
@@ -9,18 +11,18 @@ end
     end
 end
 
-@testitem "Basic functionality test" tags=[:unit, :fast] setup=[SharedData] begin
-    result=LearnDocs.hello_world()
+@testitem "Basic functionality test" tags = [:unit, :fast] setup = [SharedData] begin
+    result = LearnDocs.hello_world()
     @test result == expected_output
     @test isa(result, String)
 end
 
-@testitem "Input validation test" tags=[:unit, :validation] setup=[CommonHelpers] begin
-    result=LearnDocs.hello_world()
+@testitem "Input validation test" tags = [:unit, :validation] setup = [CommonHelpers] begin
+    result = LearnDocs.hello_world()
     @test CommonHelpers.is_valid_string(result)
 end
 
-@testitem "Performance test" tags=[:integration, :slow] begin
+@testitem "Performance test" tags = [:integration, :slow] begin
     # Test that function executes quickly
     result = @timed LearnDocs.hello_world()
     @test result.time < 0.001  # Should complete in less than 1ms
